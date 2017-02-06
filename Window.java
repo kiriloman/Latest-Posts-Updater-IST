@@ -1,5 +1,10 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.sql.Array;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.prefs.Preferences;
 
@@ -9,28 +14,48 @@ public class Window {
     private JPanel panelTable = new JPanel();
     private JPanel panelMain = new JPanel();
     private JTable table;
+    private JScrollPane scroll;
     private DefaultTableModel model;
-    private JButton plus = new JButton("Plus");
-    private JButton minus = new JButton("Minus");
+    private JButton plus = new JButton("+");
+    private JButton minus = new JButton("-");
     private JTextField field = new JTextField();
+    private JLabel lastUpdate = new JLabel();
     private Preferences preferences = Preferences.userRoot().node(this.getClass().getName());
+    private SimpleDateFormat simpleDF = new SimpleDateFormat("HH:mm:ss");
 
     public void create() {
-        String[] columnNames = {"Cadeira", "Data", "Anúncio"};
-        table = new JTable(new DefaultTableModel(null, columnNames));
-        model = (DefaultTableModel) table.getModel();
-        JScrollPane scroll = new JScrollPane(table);
+        model = new DefaultTableModel(null, new String[] {"Cadeira", "Data", "Anúncio"}) {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+        table = new JTable(model);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+
+        scroll = new JScrollPane(table);
+
+        lastUpdate.setOpaque(true);
+        lastUpdate.setHorizontalAlignment(SwingConstants.CENTER);
+
         plus.addActionListener(e -> add());
         minus.addActionListener(e -> remove());
+
         panelOptions.setLayout(new BoxLayout(panelOptions, BoxLayout.X_AXIS));
+        panelTable.setLayout(new BoxLayout(panelTable, BoxLayout.Y_AXIS));
         panelMain.setLayout(new BoxLayout(panelMain, BoxLayout.Y_AXIS));
         panelOptions.add(plus);
         panelOptions.add(minus);
         panelOptions.add(field);
         panelTable.add(scroll);
+        panelTable.add(lastUpdate);
         panelMain.add(panelOptions);
         panelMain.add(panelTable);
+
         frame.add(panelMain);
+        frame.setPreferredSize(new Dimension(370, 370));
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
 
@@ -64,18 +89,18 @@ public class Window {
     }
 
     public void remove() {
-        if (table.getSelectedRow() != -1) {
-            String name = (String) model.getValueAt(table.getSelectedRow(), 0);
-            boolean delete = true;
-            for (int i = 0; i < table.getRowCount(); i++) {
-                if (name.equals(model.getValueAt(i, 0)) && i != table.getSelectedRow()) {
-                    delete = false;
-                    break;
+        if (table.getSelectedRows().length != 0) {
+            String name;
+            for (int i = 0; i < table.getSelectedRows().length; i++) {
+                name = (String) model.getValueAt(table.getSelectedRows()[i], 0);
+                for (int j = 0; j < table.getRowCount(); j++) {
+                    if (name.equals(model.getValueAt(j, 0))) {
+                        model.removeRow(j);
+                        j--;
+                    }
                 }
-            }
-            if (delete)
                 preferences.remove(name);
-            model.removeRow(table.getSelectedRow());
+            }
         }
     }
 
@@ -97,5 +122,9 @@ public class Window {
                 //Warning message "Os anúncios desta cadeira já estão a ser seguidos..."
             }
         }
+    }
+
+    public void lastTimeUpdated() {
+        lastUpdate.setText("Last updated at: " + simpleDF.format(new Date()) + ".");
     }
 }
