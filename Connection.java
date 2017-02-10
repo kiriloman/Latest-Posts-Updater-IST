@@ -19,7 +19,6 @@ public class Connection {
         String[] partsSmall, partsH5;
         String[][] contentPerKey;
         HashMap<String, String[][]> info = new HashMap<>();
-        int k;
         try {
             for (int i = 0; i < conPreferences.keys().length; i++) {
                 System.out.println(conPreferences.keys()[i]);
@@ -34,14 +33,13 @@ public class Connection {
                 content = parsedDocH5.select("a");
                 partsSmall = date.toString().split("\n");
                 partsH5 = content.toString().split("\n");
-                k = 0;
-                contentPerKey = new String[partsH5.length][2];
+                contentPerKey = new String[1][2];
                 if (partsH5[0].length() != 0 && partsSmall[0].length() != 0) {
                     for (int j = 0; j < partsSmall.length; j++) {
                         if (Character.getNumericValue(partsSmall[j].charAt(6)) < 10) {
-                            contentPerKey[k] = new String[]{partsSmall[j].substring(6, partsSmall[j].lastIndexOf("<") - 1), partsH5[k].substring(partsH5[k].indexOf(">") + 1, partsH5[k].indexOf("<", partsH5[k].indexOf("<") + 1))};
-                            System.out.println(partsSmall[j].substring(6, partsSmall[j].lastIndexOf("<") - 1) + " " + partsH5[k].substring(partsH5[k].indexOf(">") + 1, partsH5[k].indexOf("<", partsH5[k].indexOf("<") + 1)));
-                            k++;
+                            contentPerKey[0] = new String[]{partsSmall[j].substring(6, partsSmall[j].lastIndexOf("<") - 1), partsH5[0].substring(partsH5[0].indexOf(">") + 1, partsH5[0].indexOf("<", partsH5[0].indexOf("<") + 1))};
+                            System.out.println(partsSmall[j].substring(6, partsSmall[j].lastIndexOf("<") - 1) + " " + partsH5[0].substring(partsH5[0].indexOf(">") + 1, partsH5[0].indexOf("<", partsH5[0].indexOf("<") + 1)));
+                            break;
                         }
                     }
                 }

@@ -1,15 +1,12 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Array;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 import java.util.prefs.Preferences;
 
 public class Window {
-    private JFrame frame = new JFrame("Últimos Anúncios");
+    private JFrame frame = new JFrame("Last Posts");
     private JPanel panelOptions = new JPanel();
     private JPanel panelTable = new JPanel();
     private JPanel panelMain = new JPanel();
@@ -24,7 +21,7 @@ public class Window {
     private SimpleDateFormat simpleDF = new SimpleDateFormat("HH:mm:ss");
 
     public void create() {
-        model = new DefaultTableModel(null, new String[] {"Cadeira", "Data", "Anúncio"}) {
+        model = new DefaultTableModel(null, new String[] {"Class", "Date", "Post"}) {
             @Override
             public boolean isCellEditable(int row, int col) {
                 return false;
@@ -54,6 +51,7 @@ public class Window {
         panelMain.add(panelTable);
 
         frame.add(panelMain);
+        frame.setIconImage(new ImageIcon(getClass().getClass().getResource("/refresh.png")).getImage());
         frame.setPreferredSize(new Dimension(370, 370));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
