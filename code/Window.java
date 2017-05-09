@@ -37,6 +37,7 @@ public class Window {
         table = new JTable(model);
         table.getColumnModel().getColumn(0).setMaxWidth(50);
         table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         scroll = new JScrollPane(table);
 
