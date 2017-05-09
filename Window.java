@@ -1,8 +1,15 @@
+package latestPostsIST;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.prefs.Preferences;
 
 public class Window {
@@ -15,9 +22,9 @@ public class Window {
     private DefaultTableModel model;
     private JButton plus = new JButton("+");
     private JButton minus = new JButton("-");
-    private JTextField field = new JTextField();
+    private JTextField field = new JTextField("URL to course page");
     private JLabel lastUpdate = new JLabel();
-    private Preferences preferences = Preferences.userRoot().node(this.getClass().getName());
+    private Preferences preferences = Preferences.userRoot().node("updaterIST");
     private SimpleDateFormat simpleDF = new SimpleDateFormat("HH:mm:ss");
 
     public void create() {
@@ -36,6 +43,7 @@ public class Window {
         lastUpdate.setOpaque(true);
         lastUpdate.setHorizontalAlignment(SwingConstants.CENTER);
 
+        field.addFocusListener(urlInputed());
         plus.addActionListener(e -> add());
         minus.addActionListener(e -> remove());
 
@@ -51,7 +59,11 @@ public class Window {
         panelMain.add(panelTable);
 
         frame.add(panelMain);
-        frame.setIconImage(new ImageIcon(getClass().getClass().getResource("/refresh.png")).getImage());
+        try {
+			frame.setIconImage(ImageIO.read(getClass().getResource("/resources/refresh.png")));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
         frame.setPreferredSize(new Dimension(370, 370));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -79,24 +91,32 @@ public class Window {
     public String extract(String url) {
         String name = "";
         int i = 45;
+        
         while (!Character.isDigit(url.charAt(i))) {
             name += url.charAt(i);
             i++;
         }
+        
         return name;
     }
 
     public void remove() {
         if (table.getSelectedRows().length != 0) {
+        	
             String name;
+            
             for (int i = 0; i < table.getSelectedRows().length; i++) {
+            	
                 name = (String) model.getValueAt(table.getSelectedRows()[i], 0);
+                
                 for (int j = 0; j < table.getRowCount(); j++) {
+                	
                     if (name.equals(model.getValueAt(j, 0))) {
                         model.removeRow(j);
                         j--;
                     }
                 }
+                
                 preferences.remove(name);
             }
         }
@@ -117,12 +137,32 @@ public class Window {
                 model.addRow(new String[]{extract(field.getText()), "", ""});
             }
             else {
-                //Warning message "Os anÃºncios desta cadeira jÃ¡ estÃ£o a ser seguidos..."
+                //Warning message "Os anúncios desta cadeira já estão a ser seguidos..."
             }
         }
     }
 
     public void lastTimeUpdated() {
         lastUpdate.setText("Last updated at: " + simpleDF.format(new Date()) + ".");
+    }
+    
+    public FocusListener urlInputed() {
+    	FocusListener f = new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (field.getText().equals("URL to course page"))
+					field.setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (field.getText().equals(""))
+					field.setText("URL to course page");
+			}
+    		
+    	};
+    	
+    	return f;
     }
 }
