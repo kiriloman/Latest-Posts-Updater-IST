@@ -1,5 +1,3 @@
-package latestPostsIST;
-
 import javax.swing.*;
 
 public class AnunciosReader {
