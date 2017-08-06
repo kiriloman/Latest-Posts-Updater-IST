@@ -1,5 +1,3 @@
-package latestPostsIST;
-
 import sun.audio.*;
 
 import javax.imageio.ImageIO;
@@ -29,7 +27,7 @@ public class Updater implements Runnable{
         popup.add(close);
         
         try {
-            icon = new TrayIcon(ImageIO.read(getClass().getResource("/resources/refresh.png")), "Anúncios", popup);
+            icon = new TrayIcon(ImageIO.read(getClass().getResource("/resources/refresh.png")), "AnÃºncios", popup);
             icon.setImageAutoSize(true);
             SystemTray tray = SystemTray.getSystemTray();
             tray.add(icon);
@@ -39,11 +37,7 @@ public class Updater implements Runnable{
         
         while (true) {
             try {
-                //HashMap<String, String[][]> test = new HashMap<>(), test1 = new HashMap<>();
-                //test.put("ask", new String[][]{{"kk", "kk"}});
-                //test1.put("ask", new String[][]{{"k", "kk"}});
                 window.lastTimeUpdated();
-                //newPost(test, test1);
                 Thread.sleep(300000);
                 after = connection.update();
                 window.fill(after);
