@@ -1,5 +1,3 @@
-package latestPostsIST;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -103,21 +101,15 @@ public class Window {
 
     public void remove() {
         if (table.getSelectedRows().length != 0) {
-        	
             String name;
-            
             for (int i = 0; i < table.getSelectedRows().length; i++) {
-            	
                 name = (String) model.getValueAt(table.getSelectedRows()[i], 0);
-                
-                for (int j = 0; j < table.getRowCount(); j++) {
-                	
+                for (int j = 0; j < table.getRowCount(); j++) {	
                     if (name.equals(model.getValueAt(j, 0))) {
                         model.removeRow(j);
                         j--;
                     }
-                }
-                
+                }  
                 preferences.remove(name);
             }
         }
@@ -137,9 +129,6 @@ public class Window {
                 preferences.put(extract(field.getText()), field.getText());
                 model.addRow(new String[]{extract(field.getText()), "", ""});
             }
-            else {
-                //Warning message "Os anúncios desta cadeira já estão a ser seguidos..."
-            }
         }
     }
 
@@ -149,21 +138,19 @@ public class Window {
     
     public FocusListener urlInputed() {
     	FocusListener f = new FocusListener() {
-
+		
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (field.getText().equals("URL to course page"))
 					field.setText("");
 			}
-
+		
 			@Override
 			public void focusLost(FocusEvent e) {
 				if (field.getText().equals(""))
 					field.setText("URL to course page");
 			}
-    		
     	};
-    	
     	return f;
     }
 }
