@@ -102,7 +102,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="44" />
     <option name="width" value="1346" />
@@ -289,7 +289,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1507744907462</updated>
-      <workItem from="1507744915234" duration="5407000" />
+      <workItem from="1507744915234" duration="6003000" />
     </task>
     <servers />
   </component>
