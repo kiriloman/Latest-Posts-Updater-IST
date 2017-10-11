@@ -6,34 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47807ab-324d-4448-a6f8-8c4dde8529e3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/AnunciosReader.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/Connection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/Updater.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/Window$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/Window$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/classes/Window.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/resources/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/resources/spin.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/artifacts/AnunciosReader_jar/AnunciosReader.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/resources/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/resources/spin.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/AnunciosReader_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.project" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AnunciosReader.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/classes/AnunciosReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/classes/Connection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/classes/Updater.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/classes/Window.java" />
-    </list>
+    <list default="true" id="e47807ab-324d-4448-a6f8-8c4dde8529e3" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/src/classes/Updater.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="71" column="79" lean-forward="true" selection-start-line="71" selection-start-column="79" selection-end-line="71" selection-end-column="79" />
+              <caret line="71" column="79" lean-forward="false" selection-start-line="71" selection-start-column="79" selection-end-line="71" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,7 +71,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="44" />
     <option name="width" value="1346" />
@@ -274,15 +247,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1507744907462</updated>
-      <workItem from="1507744915234" duration="5407000" />
+      <workItem from="1507744915234" duration="6003000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5407000" />
+    <option name="totallyTimeSpent" value="6003000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="44" width="1368" height="780" extended-state="7" />
+    <frame x="10" y="44" width="1368" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -364,7 +337,7 @@
     <entry file="file://$PROJECT_DIR$/src/classes/Updater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="71" column="79" lean-forward="true" selection-start-line="71" selection-start-column="79" selection-end-line="71" selection-end-column="79" />
+          <caret line="71" column="79" lean-forward="false" selection-start-line="71" selection-start-column="79" selection-end-line="71" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
