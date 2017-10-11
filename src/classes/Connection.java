@@ -17,7 +17,6 @@ public class Connection {
         org.jsoup.select.Elements elementsH5;
         org.jsoup.select.Elements date;
         org.jsoup.select.Elements content;
-        
         String stringSmall, stringH5;
         String[] partsSmall, partsH5;
         String[][] contentPerKey;
@@ -55,7 +54,6 @@ public class Connection {
                         }
                     }
                 }
-                
                 info.put(conPreferences.keys()[i], contentPerKey);
             }
         } catch (BackingStoreException | IOException e) {

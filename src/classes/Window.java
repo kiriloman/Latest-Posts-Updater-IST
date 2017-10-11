@@ -90,19 +90,17 @@ public class Window {
         frame.setVisible(true);
     }
 
-    public String extract(String url) {
+    private String extract(String url) {
         String name = "";
         int i = 45;
-        
         while (!Character.isDigit(url.charAt(i))) {
             name += url.charAt(i);
             i++;
         }
-        
         return name;
     }
 
-    public void remove() {
+    private void remove() {
         if (table.getSelectedRows().length != 0) {
             String name;
             for (int i = 0; i < table.getSelectedRows().length; i++) {
@@ -118,7 +116,7 @@ public class Window {
         }
     }
 
-    public void add() {
+    private void add() {
         if (field.getText().startsWith("https://fenix.tecnico.ulisboa.pt/disciplinas/")) {
             boolean insert = true;
             String name = extract(field.getText());
@@ -139,9 +137,8 @@ public class Window {
         lastUpdate.setText("Last updated at: " + simpleDF.format(new Date()) + ".");
     }
     
-    public FocusListener urlInputed() {
+    private FocusListener urlInputed() {
     	FocusListener f = new FocusListener() {
-		
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (field.getText().equals("URL to course page"))
