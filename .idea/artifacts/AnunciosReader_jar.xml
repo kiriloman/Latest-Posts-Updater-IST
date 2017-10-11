@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AnunciosReader:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/AnunciosReader_jar</output-path>
+    <root id="archive" name="AnunciosReader.jar">
+      <element id="module-output" name="AnunciosReader" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jsoup-1.10.2.jar" path-in-jar="/" />
+      <element id="library" level="module" name="jsoup-1.10.2.jar" module-name="AnunciosReader" />
+    </root>
+  </artifact>
+</component>
