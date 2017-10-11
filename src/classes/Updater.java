@@ -12,14 +12,13 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Updater implements Runnable{
-
     public void run() {
         Window window = new Window();
         Connection connection = new Connection();
         TrayIcon icon;
         PopupMenu popup = new PopupMenu();
         MenuItem close = new MenuItem("Close"), open = new MenuItem("Open");
-        HashMap<String, String[][]> before = connection.update(), after = new HashMap<>();
+        HashMap<String, String[][]> before = connection.update(), after;
         
         window.create();
         window.fill(before);
@@ -28,7 +27,6 @@ public class Updater implements Runnable{
         close.addActionListener(e -> System.exit(0));
         popup.add(open);
         popup.add(close);
-        
         try {
             icon = new TrayIcon(ImageIO.read(getClass().getResource("/resources/refresh.png")), "Anúncios", popup);
             icon.setImageAutoSize(true);
@@ -37,7 +35,7 @@ public class Updater implements Runnable{
         } catch (IOException | AWTException e) {
             e.printStackTrace();
         }
-        
+
         while (true) {
             try {
                 window.lastTimeUpdated();
@@ -52,20 +50,20 @@ public class Updater implements Runnable{
         }
     }
 
-    public void newPost(HashMap<String, String[][]> before, HashMap<String, String[][]> after) {
+    private void newPost(HashMap<String, String[][]> before, HashMap<String, String[][]> after) {
         if (before.size() < after.size()) {
             popUp();
             return;
         }
         for (String beforeKey : before.keySet()) {
             if (after.keySet().contains(beforeKey) && before.get(beforeKey)[0][0] != null && !before.get(beforeKey)[0][0].equals(after.get(beforeKey)[0][0])) {
-                	popUp();
-                    break;
+                popUp();
+                break;
             }
         }
     }
 
-    public void popUp() {
+    private void popUp() {
         try {
             String basePath = new File("").getAbsolutePath();
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(basePath.concat("/src/resources/spin.wav")));
